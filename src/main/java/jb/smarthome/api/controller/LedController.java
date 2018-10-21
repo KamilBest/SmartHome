@@ -1,4 +1,4 @@
-package jb.smarthome.controller;
+package jb.smarthome.api.controller;
 
 import com.pi4j.io.gpio.*;
 import org.springframework.stereotype.Controller;
