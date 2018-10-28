@@ -1,10 +1,8 @@
-package jb.smarthome;
+package jb.smarthome.api.controller;
 
 import com.pi4j.io.gpio.*;
-import com.pi4j.wiringpi.Gpio;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
