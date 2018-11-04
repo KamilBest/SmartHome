@@ -10,10 +10,6 @@ import java.io.IOException;
 @Controller
 public class ServoController {
 
-    private final int CENTER_POSITION = 150;
-    private final int MAX_POSITION = 250;
-    private final int MIN_POSITION = 60;
-
     private static int servoPosition = 150;
 
     @PostConstruct
@@ -36,6 +32,7 @@ public class ServoController {
     @ResponseBody
     public void centerServo() {
 
+        int CENTER_POSITION = 150;
         servoPosition = CENTER_POSITION;
         turnServo(servoPosition);
 
@@ -43,8 +40,9 @@ public class ServoController {
 
     @RequestMapping("/turnLeft")
     @ResponseBody
-    public int turnRight() {
+    public int turnLeft() {
 
+        int MAX_POSITION = 220;
         if (servoPosition + 10<= MAX_POSITION) {
             servoPosition += 10;
             turnServo(servoPosition);
@@ -54,7 +52,8 @@ public class ServoController {
 
     @RequestMapping("/turnRight")
     @ResponseBody
-    public int turnLeft() {
+    public int turnRight() {
+        int MIN_POSITION = 60;
         if (servoPosition -10>= MIN_POSITION) {
             servoPosition -= 10;
             turnServo(servoPosition);
