@@ -41,8 +41,8 @@ public class TemperatureController {
 
                if(((temperature.getTemperature() != null && temperature.getHumidity() != null) && (temperature.getTemperature()!=0.0 && temperature.getHumidity()!=0.0)))
                    break;
-               System.out.printf("Temperature: %.1f C\n", temperature.getTemperature());
-               System.out.printf("Humidity:    %.1f %%\n", temperature.getHumidity());
+              // System.out.printf("Temperature: %.1f C\n", temperature.getTemperature());
+               //System.out.printf("Humidity:    %.1f %%\n", temperature.getHumidity());
            }
         return temperature;
     }
