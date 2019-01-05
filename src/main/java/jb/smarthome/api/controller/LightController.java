@@ -1,10 +1,14 @@
 package jb.smarthome.api.controller;
 
 import com.pi4j.io.gpio.*;
+import jb.smarthome.api.model.Light;
+import jb.smarthome.api.model.LightResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
 
 @Controller
 public class LightController {
@@ -16,13 +20,16 @@ public class LightController {
 
     @RequestMapping("/ledState")
     @ResponseBody
-    public boolean[] ledState() {
-        boolean[] isOn = new boolean[3];
-        isOn[0] = pin27.isHigh();
-        isOn[1] = pin28.isHigh();
-        isOn[2] = pin29.isHigh();
-        System.out.println(isOn);
-        return isOn;
+    public LightResponse ledState() {
+        ArrayList<Light> lightArrayList=new ArrayList<>();
+        lightArrayList.add(new Light("Kuchnia", pin27.isHigh(), 27));
+        lightArrayList.add(new Light("Kuchnia", pin28.isHigh(), 28));
+        lightArrayList.add(new Light("Kuchnia", pin29.isHigh(), 29));
+
+        LightResponse lightResponse=new LightResponse(lightArrayList);
+
+        System.out.println(lightResponse);
+        return lightResponse;
     }
 
     @RequestMapping("/turnOff")
