@@ -36,6 +36,8 @@ public class ServoController {
         servoPosition = CENTER_POSITION;
         turnServo(servoPosition);
 
+        System.out.println("Wycentrowano serwo");
+
     }
 
     @RequestMapping("/turnLeft")
@@ -47,6 +49,9 @@ public class ServoController {
             servoPosition += 10;
             turnServo(servoPosition);
         }
+
+        System.out.println("Obrócono kamerę w lewo");
+
         return servoPosition;
     }
 
@@ -58,6 +63,8 @@ public class ServoController {
             servoPosition -= 10;
             turnServo(servoPosition);
         }
+        System.out.println("Obrócono kamerę w prawo");
+
         return servoPosition;
     }
 

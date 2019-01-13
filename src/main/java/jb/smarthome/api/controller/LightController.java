@@ -22,9 +22,9 @@ public class LightController {
     @ResponseBody
     public LightResponse ledState() {
         ArrayList<Light> lightArrayList=new ArrayList<>();
-        lightArrayList.add(new Light("Kuchnia", pin27.isHigh(), 27));
+        lightArrayList.add(new Light("Salon", pin27.isHigh(), 27));
         lightArrayList.add(new Light("Kuchnia", pin28.isHigh(), 28));
-        lightArrayList.add(new Light("Kuchnia", pin29.isHigh(), 29));
+        lightArrayList.add(new Light("Korytarz", pin29.isHigh(), 29));
 
         LightResponse lightResponse=new LightResponse(lightArrayList);
 
@@ -39,12 +39,17 @@ public class LightController {
         {
             case 27:
                 pin27.setState(PinState.LOW);
+                System.out.println("Zgaszono światło (pin 27)");
                 break;
             case 28:
                 pin28.setState(PinState.LOW);
+                System.out.println("Zgaszono światło (pin 28)");
+
                 break;
             case 29:
                 pin29.setState(PinState.LOW);
+                System.out.println("Zgaszono światło (pin 29)");
+
                 break;
         }
     }
@@ -56,13 +61,40 @@ public class LightController {
         {
             case 27:
                 pin27.setState(PinState.HIGH);
+                System.out.println("Zapalono światło (pin 27)");
                 break;
             case 28:
                 pin28.setState(PinState.HIGH);
+                System.out.println("Zapalono światło (pin 28)");
                 break;
             case 29:
                 pin29.setState(PinState.HIGH);
+                System.out.println("Zapalono światło (pin 29)");
                 break;
         }
+    }
+
+    @RequestMapping("/turnAllOn")
+    @ResponseBody
+    public void turnAllOn()
+    {
+        pin27.setState(PinState.HIGH);
+        pin28.setState(PinState.HIGH);
+        pin29.setState(PinState.HIGH);
+
+        System.out.println("Zapalono wszystkie światła");
+
+    }
+
+    @RequestMapping("/turnAllOff")
+    @ResponseBody
+    public void turnAllOff()
+    {
+        pin27.setState(PinState.LOW);
+        pin28.setState(PinState.LOW);
+        pin29.setState(PinState.LOW);
+
+        System.out.println("Zgaszono wszystkie światła");
+
     }
 }

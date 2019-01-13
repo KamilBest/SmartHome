@@ -27,6 +27,8 @@ public class TemperatureController {
         temperatureResponse.setTemperatures(temperatures);
         temperatureResponse.setAvgTemperature(averageTempOrHumidity(temperatures, true));
         temperatureResponse.setAvgHumidity(averageTempOrHumidity(temperatures, false));
+
+        System.out.println(temperatureResponse);
         return temperatureResponse;
     }
 
