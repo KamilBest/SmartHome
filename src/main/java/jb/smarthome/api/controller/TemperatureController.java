@@ -18,10 +18,12 @@ public class TemperatureController {
     public TemperatureResponse temperature() {
         Temperature temperature1 = readDHT11Temp(24, "Pokój1");
         Temperature temperature2 = readDHT11Temp(25, "Kuchnia");
+        Temperature temperature3 = readDHT11Temp(3, "Sypialnia");
 
         ArrayList<Temperature> temperatures = new ArrayList<>();
         temperatures.add(temperature1);
         temperatures.add(temperature2);
+        temperatures.add(temperature3);
 
         TemperatureResponse temperatureResponse = new TemperatureResponse();
         temperatureResponse.setTemperatures(temperatures);

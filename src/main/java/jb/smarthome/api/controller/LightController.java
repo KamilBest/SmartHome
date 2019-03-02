@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 @Controller
 public class LightController {
-    final GpioController gpio = GpioFactory.getInstance();
-    final GpioPinDigitalOutput pin27 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_27);
-    final GpioPinDigitalOutput pin28 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_28);
-    final GpioPinDigitalOutput pin29 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_29);
+    static final GpioController gpio = GpioFactory.getInstance();
+    static final GpioPinDigitalOutput pin27 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_27);
+    static final GpioPinDigitalOutput pin28 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_28);
+    static final GpioPinDigitalOutput pin29 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_29);
 
 
     @RequestMapping("/ledState")
@@ -96,5 +96,17 @@ public class LightController {
 
         System.out.println("Zgaszono wszystkie światła");
 
+    }
+
+    public static GpioPinDigitalOutput getPin27() {
+        return pin27;
+    }
+
+    public static GpioPinDigitalOutput getPin28() {
+        return pin28;
+    }
+
+    public static GpioPinDigitalOutput getPin29() {
+        return pin29;
     }
 }
