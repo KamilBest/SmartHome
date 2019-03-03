@@ -18,15 +18,19 @@ public class TemperatureController {
     public TemperatureResponse temperature() {
         Temperature temperature1 = readDHT11Temp(24, "Pokój1");
         Temperature temperature2 = readDHT11Temp(25, "Kuchnia");
+        Temperature temperature3 = readDHT11Temp(3, "Sypialnia");
 
         ArrayList<Temperature> temperatures = new ArrayList<>();
         temperatures.add(temperature1);
         temperatures.add(temperature2);
+        temperatures.add(temperature3);
 
         TemperatureResponse temperatureResponse = new TemperatureResponse();
         temperatureResponse.setTemperatures(temperatures);
         temperatureResponse.setAvgTemperature(averageTempOrHumidity(temperatures, true));
         temperatureResponse.setAvgHumidity(averageTempOrHumidity(temperatures, false));
+
+        System.out.println(temperatureResponse);
         return temperatureResponse;
     }
 
@@ -34,7 +38,6 @@ public class TemperatureController {
         DHT11 dht11 = new DHT11(pin);
         Temperature temperature = new Temperature();
         temperature.setRoom(room);
-        boolean isTempOk=true;
            while(true) {
                DHT11Result dht11Result = dht11.read();
                temperature.setTemperature(dht11Result.getTemperature());
@@ -42,7 +45,7 @@ public class TemperatureController {
 
                if(((temperature.getTemperature() != null && temperature.getHumidity() != null) && (temperature.getTemperature()!=0.0 && temperature.getHumidity()!=0.0)))
                    break;
-               //System.out.printf("Temperature: %.1f C\n", temperature.getTemperature());
+              // System.out.printf("Temperature: %.1f C\n", temperature.getTemperature());
                //System.out.printf("Humidity:    %.1f %%\n", temperature.getHumidity());
            }
         return temperature;
